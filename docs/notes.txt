@@ -1,0 +1,32 @@
+Etude des valeurs manquantes dans train.csv
+1. Intuition : ctrl-f dans éditeur de texte sur le fichier : les 8612 valeurs manquantes se situent
+dans la colonne du lieu du tweet.
+2. Vérification : parsing python pour compter les valeurs manquantes dans chaque colonne
+Bien que le fichier csv soit un .csv séparé par ",", il ne suffit pas de faire split(",") sur
+chaque ligne pour regarder les valeurs de chaque colonne car certaines colonnes sont des chaînes de
+caractères délimitées par des guillemets et contenant des virgules. Cependant, quand on a ce format
+de valeur, il n'y a pas toujours de guillemets. Il faut donc faire une regex pour matcher les
+valeurs de chaque ligne en tenant compte de ces alternatives. La regex que j'ai trouvée est :
+(\d*),(\d*),("[^"]*"|[^,]*),([-\d]*),("[^"]*"(?5)?|[^,]*),([\w ]*)
+Remarque : (?5)? signifie de regarder récursivement si nécessaire le groupe 5 de la regex. Cela
+permet de prendre en compte les tweets avec des guillemets à l'intérieur, en partant du principe
+qu'un guillemet ouvert est refermé. /!\ installer le package regex avec pip.
+3. Résultat en Python : [0, 0, 8590, 0, 0, 0] (liste du nombre de valeurs manquantes par colonne)
+4. Conclusion : Les valeurs manquantes sont concentrées sur la 3ème colonne (lieu du tweet). On va 
+faire avec. Pas d'intérêt à mettre une valeur de remplacement, cela ajouterait du bruit.
+Les 8612 valeurs manquantes du point 1 comprennent les valeurs manquantes détectées en Python mais
+également du bruit : typo dans un tweet (",,").
+
+normalisation du texte des tweets par suppression des # des hashtags, suppression des
+URLs et des mentions @.
+1. Implementation : une fonction qui parse le fichier csv et extraire tous les valeurs de la colonne 
+OrginalTweet en une liste, puis traiter cette liste en supprimant les #, urls et @ .
+2. Résultat en Python : la liste de la colonne nettoyée
+3. Conclusion : Normalisation du texte est faite, ça nous facilite les tâches plus tard.
+
+Régression logistique : 
+Résultats
+- avec 5 sentiments : meilleur score sur le training set : 0.7781422358286562 (précision)
+- avec 3 sentiments : 89% de précision
+- avec 5 sentiments, il a fallu changer le solver utilisé : lbfgs (par défaut) -> sag qui est plus
+adapté aux grands datasets

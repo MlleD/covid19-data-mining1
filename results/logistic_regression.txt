@@ -1,0 +1,4 @@
+Mode nombre de sentiments réduits : True
+Score de précision sur ensemble d'entraînement 0.8922662001603615
+Mode nombre de sentiments réduits : False
+Score de précision sur ensemble d'entraînement 0.7781179386252642

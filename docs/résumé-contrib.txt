@@ -1,0 +1,29 @@
+Contributions personnelles 
+
+- Dorothée : étude des valeurs manquantes par comptage des valeurs manquantes par colonne
+- Haifa : normalisation du texte des tweets par suppression des # des hashtags et suppression des
+URLs
+- Dorothée : regex pour récupérer les données des fichiers csv
+- Dorothée : parsing du fichier train.csv pour récupérer son contenu (sans nettoyage) dans une 
+structure de données adaptée : liste contenant à chaque index (6 en tout car 6 colonnes de données)
+une liste de N données (ça peut être le jour du tweet, son lieu, sentiment du tweet, etc.)
+- Dorothée : normalisation du texte des tweets par suppression des caractères spéciaux,
+remplacement de chaque occurrence des caractères ¬í et \x92 par une apostrophe, remplacement de
+chaque occurrence de \n, \x(nombre hexadécimal) par un espace, remplacement des séquences d'au
+moins deux espaces par un espace, trim (retrait des whitespaces) gauche et droit, mise en minuscule
+- Dorothée : normalisation du texte par remplacement de synonymes de covid et coronavirus par covid
+et coronavirus
+- Dorothée et Haifa : choix de la méthode de vectorisation du texte des tweets
+- Haifa : représenter le nombre des tweets par sentiment sous forme graphique
+- Haifa : représenter le nombre des tweets par date triée sous forme graphique
+- Dorothée : Vectorisation TF-IDF du corpus de textes de tweets
+- Dorothée : Latent Dirichlet Allocation (LDA) pour trouver les thématiques du corpus de tweets
+- Dorothée : Visualisation LDA
+- Dorothée : Similarité cosinus
+- Haifa : split Corona_train csv file into train and test  
+- Haifa : Cross validation 
+- Haifa : knn 
+- Dorothée et Haifa : Camel case split
+- Haifa : word break algo 
+- Dorothée : Régression logistique
+- Haifa : SVM

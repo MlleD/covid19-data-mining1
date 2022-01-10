@@ -1,0 +1,4 @@
+Libs python à installer :
+- regex
+- matplotlib
+- pyLDAvis
